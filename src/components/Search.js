@@ -18,8 +18,19 @@ function Search() {
       });
       setResults(resData.data.query.search);
     };
-    if (term) {
+
+    if (term && !results.length) {
       search();
+    } else {
+      const timeOutId = setTimeout(() => {
+        if (term) {
+          search();
+        }
+      }, 500);
+
+      return () => {
+        clearTimeout(timeOutId);
+      };
     }
   }, [term]);
 
