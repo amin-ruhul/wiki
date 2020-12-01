@@ -29,7 +29,8 @@ function Search() {
         <ul className="list-group">
           <li className="list-group-item">
             <h5>{result.title}</h5>
-            <p>{result.snippet}</p>
+            <p dangerouslySetInnerHTML={{ __html: result.snippet }} />
+            {/* <span dangerouslySetInnerHTML>={{ __html: result.snippet }}</span> */}
             <a
               className="btn btn-primary"
               href={`https://en.wikipedia.org?curid=${result.pageid}`}
